@@ -53,10 +53,15 @@ const server = http.createServer((req, res) => {
             newPath += 'about.html';
             res.statusCode = 200;
             break;
+        case '/about-me':
+            res.statusCode = 301; // redirect
+            res.setHeader('Location', '/about');
+            res.end();
+            break;
 
         default:
             newPath += '404.html'
-            res.statusCode = 404;
+            res.statusCode = 404; //not found
             break;
     }
     fs.readFile(newPath, (err, data) => {
