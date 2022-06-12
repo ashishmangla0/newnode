@@ -40,25 +40,23 @@ const server = http.createServer((req, res) => {
     // });
 
     //res.end(); //requestend and send back to server
-
-
-
-
-
     //server multiple pages
 
     let newPath = './04/views/';
     switch (req.url) {
         case '/':
             newPath += 'index.html'
+            res.statusCode = 200;
             break;
 
         case '/about':
-            newPath += 'about.html'
+            newPath += 'about.html';
+            res.statusCode = 200;
             break;
 
         default:
             newPath += '404.html'
+            res.statusCode = 404;
             break;
     }
     fs.readFile(newPath, (err, data) => {
