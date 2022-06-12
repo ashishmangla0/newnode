@@ -27,7 +27,41 @@ const server = http.createServer((req, res) => {
     // res.write(`<p>Hello Ashish</p>`); //write response from the server
 
     //Serving HTML from the filesssytem
-    fs.readFile('./04/views/index.html', (err, data) => {
+    // fs.readFile('./04/views/index.html', (err, data) => {
+    //     if (err) {
+    //         console.log(err);
+    //         res.end();
+    //     }
+    //     else {
+    //         res.write(data)
+    //         res.end();
+    //         //or res.end(data)
+    //     }
+    // });
+
+    //res.end(); //requestend and send back to server
+
+
+
+
+
+    //server multiple pages
+
+    let newPath = './04/views/';
+    switch (req.url) {
+        case '/':
+            newPath += 'index.html'
+            break;
+
+        case '/about':
+            newPath += 'about.html'
+            break;
+
+        default:
+            newPath += '404.html'
+            break;
+    }
+    fs.readFile(newPath, (err, data) => {
         if (err) {
             console.log(err);
             res.end();
@@ -35,18 +69,10 @@ const server = http.createServer((req, res) => {
         else {
             res.write(data)
             res.end();
+            //or res.end(data)
         }
+    });
 
-
-
-    })
-
-
-    //res.end(); //requestend and send back to server
-
-
-    //serving plane text
-    //res.writeHead(200,{'Content-Type': 'text-plain'});
 
 
 
