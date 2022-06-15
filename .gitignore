@@ -1,2 +1,4 @@
 # dependencies
 /node_modules
+
+/node-mongo/node_modules
