@@ -1,5 +1,8 @@
-const {Schema} = require('mongoose');
-const courierSchema = new Schema({
+const mongoose = require('mongoose');
+
+//const childSchema = new mongoose.Schema([{ type:,required: true },{ weight: 'string',type:'string' }]);
+
+const courierSchema = new mongoose.Schema({
     awb: {
         type: Number,
         required: true
@@ -16,24 +19,28 @@ const courierSchema = new Schema({
         type: String,
         required: true
     },
-    weight:{
-        type: String,
-        required: true
-    },
-    service:{
-        type: String,
-        required: true
+    weight: {
+        qty:{type: String,required: true},
+        meas:{type: String,required: true}
     },
     fwdngNo:{
         type: String,
     },
-    rcvdBy:{
-        type: String,
-        required: true
+    date:{
+        type: Date,
+        default: Date.now
     },
     rcvdBy:{
-        type: String,
-        required: true
+        type: String
+    },
+    remarks:{
+        type: String
+    },
+    amount:{
+        type: String
+    },
+    paymentStatus:{
+        type: String
     }
 },{timestamps:true});
 
@@ -41,48 +48,3 @@ const courierSchema = new Schema({
 const Courier = mongoose.model('Courier',courierSchema);
 
 module.exports = Courier;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
